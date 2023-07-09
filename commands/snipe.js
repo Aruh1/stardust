@@ -37,8 +37,10 @@ module.exports = {
         const nextButtonCustomID = generateButtonCustomID();
 
         const createEmbedAndButtons = () => {
-            const buttons = [];
             let embed = new EmbedBuilder();
+            
+            const buttons = [];
+            const actionRow = new ActionRowBuilder();
 
             if (!filteredSnipeData.length) {
                 embed = embed.setDescription('No message logged.');
@@ -57,7 +59,6 @@ module.exports = {
                     );
                 }
 
-                const actionRow = new ActionRowBuilder();
                 buttons.forEach(button => actionRow.addComponents(button));
             }
 
