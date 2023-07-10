@@ -3,7 +3,7 @@ name: 'OpenCommit Action'
 on:
   push:
     # this list of branches is often enough,
-    # but you may still ignore other public branches
+    # but you may still ignore other public branches hylyh
     branches-ignore: [master]
 
 jobs:
