@@ -3,8 +3,15 @@ const { EmbedBuilder } = require("discord.js");
 const { deletedChannelId } = require("../config.js");
 
 module.exports = async (client, message) => {
-    await db.snipe.create({ messageContent: message.content });
-    const msgDeleteEmbed = new EmbedBuilder()
+    const author = message.author;
+    console.log(author)
+    await db.snipe.create({
+        content: message.content,
+        channelId: message.channelId,
+        userAvatarURL: author.displayAvatarURL(),
+        userDisplayName: author.username
+    });
+    const deletedMessageEmbed = new EmbedBuilder()
         .setColor(0xff0000)
         .setTitle("Message Delete")
         .setAuthor({
@@ -25,14 +32,14 @@ module.exports = async (client, message) => {
         );
 
     message.attachments.forEach(attachment => {
-        msgDeleteEmbed.addFields({ name: "Attachment", value: attachment.url });
+        deletedMessageEmbed.addFields({ name: "Attachment", value: attachment.url });
     });
 
-    msgDeleteEmbed.setTimestamp().setFooter({ text: client.user.username });
+    deletedMessageEmbed.setTimestamp().setFooter({ text: client.user.username });
 
     const channel = await client.channels.fetch(deletedChannelId);
     channel.send({
         content: `DELETE: \`${message.author.username}\` (${message.author.id})`,
-        embeds: [msgDeleteEmbed]
+        embeds: [deletedMessageEmbed]
     });
 };

@@ -16,7 +16,10 @@ const playlist = Schema({
 
 const snipe = Schema(
     {
-        messageContent: String
+        content: String,
+        channelId: String,
+        userAvatarURL: String,
+        userDisplayName: String,
     },
     { timestamps: true }
 );

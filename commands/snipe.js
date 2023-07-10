@@ -1,6 +1,12 @@
 const crypto = require("crypto");
 const mongoDB = require("../mongoDB");
-const { ButtonBuilder, ButtonStyle, EmbedBuilder, ActionRowBuilder } = require("discord.js");
+const {
+    ButtonBuilder,
+    ButtonStyle,
+    EmbedBuilder,
+    ActionRowBuilder,
+    ApplicationCommandOptionType
+} = require("discord.js");
 
 const isUserInteraction = interaction => interaction.user.id === interaction.user.id;
 
@@ -29,27 +35,46 @@ module.exports = {
     name: "snipe",
     description: "Retrieve the most recently deleted message in the channel.",
     permissions: "",
+    options: [
+        {
+            name: "channel",
+            description: "The channel to search for recently deleted messages.",
+            type: ApplicationCommandOptionType.Channel
+        }
+    ],
     run: async (_client, interaction) => {
-        const snipeData = await mongoDB.snipe.find();
-        const filteredSnipeData = snipeData.filter(entry => entry.messageContent);
+        const channel = interaction.options.getChannel("channel");
+        const filter = channel ? { channelId: channel.id } : {};
+        console.log(filter);
+        const snipeData = await mongoDB.snipe.find(filter);
+        console.log(snipeData);
+        const filteredSnipeData = snipeData.filter(entry => entry.content).reverse();
+
         let currentPage = 1;
         const previousButtonCustomID = generateButtonCustomID();
         const nextButtonCustomID = generateButtonCustomID();
 
         const createEmbedAndButtons = () => {
-            let embed = new EmbedBuilder();
-            
+            const embed = new EmbedBuilder();
             const buttons = [];
             const actionRow = new ActionRowBuilder();
 
-            if (!filteredSnipeData.length) {
-                embed = embed.setDescription('No message logged.');
+            if (filteredSnipeData.length === 0) {
+                embed.setDescription("No messages logged.");
             } else {
-                embed = embed.setDescription(filteredSnipeData[currentPage - 1].messageContent);
+                const currentSnipe = filteredSnipeData[currentPage - 1];
+                const messageContent = currentSnipe?.content || "";
+                const authorIconURL = currentSnipe?.userAvatarURL || "";
+                const authorDisplayName = currentSnipe?.userDisplayName || "";
+
+                embed.setDescription(messageContent).setAuthor({iconURL: authorIconURL, name: authorDisplayName });
 
                 if (currentPage > 1) {
                     buttons.push(
-                        new ButtonBuilder().setCustomId(previousButtonCustomID).setEmoji("◀").setStyle(ButtonStyle.Primary)
+                        new ButtonBuilder()
+                            .setCustomId(previousButtonCustomID)
+                            .setEmoji("◀")
+                            .setStyle(ButtonStyle.Primary)
                     );
                 }
 
@@ -59,7 +84,7 @@ module.exports = {
                     );
                 }
 
-                buttons.forEach(button => actionRow.addComponents(button));
+                actionRow.addComponents(...buttons);
             }
 
             return { ...(buttons.length ? { components: [actionRow] } : {}), embeds: [embed] };
