@@ -38,18 +38,21 @@ module.exports = {
 
         const createEmbedAndButtons = () => {
             let embed = new EmbedBuilder();
-            
+
             const buttons = [];
             const actionRow = new ActionRowBuilder();
 
             if (!filteredSnipeData.length) {
-                embed = embed.setDescription('No message logged.');
+                embed = embed.setDescription("No message logged.");
             } else {
                 embed = embed.setDescription(filteredSnipeData[currentPage - 1].messageContent);
 
                 if (currentPage > 1) {
                     buttons.push(
-                        new ButtonBuilder().setCustomId(previousButtonCustomID).setEmoji("◀").setStyle(ButtonStyle.Primary)
+                        new ButtonBuilder()
+                            .setCustomId(previousButtonCustomID)
+                            .setEmoji("◀")
+                            .setStyle(ButtonStyle.Primary)
                     );
                 }
 
