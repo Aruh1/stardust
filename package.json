@@ -45,7 +45,8 @@
         "start": "node start.js",
         "dev": "nodemon start.js",
         "pretty": "prettier --check */*.js",
-        "pretty:write": "prettier --write */*.js"
+        "pretty:write": "prettier --write */*.js",
+        "ocoai": "opencommit"
     },
     "author": "Rizki Pratama",
     "license": "ISC",
