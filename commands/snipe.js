@@ -67,7 +67,7 @@ module.exports = {
                 const authorIconURL = currentSnipe?.userAvatarURL || "";
                 const authorDisplayName = currentSnipe?.userDisplayName || "";
 
-                embed.setDescription(messageContent).setAuthor({iconURL: authorIconURL, name: authorDisplayName });
+                embed.setDescription(messageContent).setAuthor({ iconURL: authorIconURL, name: authorDisplayName });
 
                 if (currentPage > 1) {
                     buttons.push(

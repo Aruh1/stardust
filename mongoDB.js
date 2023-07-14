@@ -19,7 +19,7 @@ const snipe = Schema(
         content: String,
         channelId: String,
         userAvatarURL: String,
-        userDisplayName: String,
+        userDisplayName: String
     },
     { timestamps: true }
 );

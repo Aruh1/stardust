@@ -2,6 +2,9 @@ const { EmbedBuilder } = require("discord.js");
 const { editedChannelId } = require("../config.js");
 
 module.exports = async (client, oldMessage, newMessage) => {
+    const newContent = newMessage.content;
+    const oldContent = oldMessage.content;
+    if (!newContent || newContent === oldContent) return;
     const msgEditEmbed = new EmbedBuilder()
         .setColor(0x0000ff)
         .setTitle("Message Edit")
@@ -9,8 +12,8 @@ module.exports = async (client, oldMessage, newMessage) => {
             name: `${oldMessage.author.username}`,
             iconURL: oldMessage.author.displayAvatarURL()
         })
-        .addFields({ name: "Old Content", value: `> ${oldMessage.content}` })
-        .addFields({ name: "New Content", value: `> ${newMessage.content}` })
+        .addFields({ name: "Old Content", value: `> ${oldContent}` })
+        .addFields({ name: "New Content", value: `> ${newContent}` })
         .addFields({ name: "Channel", value: `<#${oldMessage.channel.id}>` })
         .addFields(
             { name: "Username", value: `<@${oldMessage.author.id}>`, inline: true },

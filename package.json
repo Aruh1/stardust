@@ -14,6 +14,7 @@
         "@distube/yt-dlp": "^1.1.3",
         "@distube/ytdl-core": "^4.11.10",
         "@top-gg/sdk": "^3.1.5",
+        "@tsmx/human-readable": "^2.0.1",
         "discord-hybrid-sharding": "^2.1.3",
         "discord.js": "^14.11.0",
         "distube": "^4.0.4",
@@ -25,14 +26,11 @@
         "lzma-native": "^8.0.6",
         "mongoose": "^7.3.0",
         "node-gyp": "^9.4.0",
-        "nodemon": "^3.0.0",
         "pm2": "^5.3.0",
         "sapphire": "^0.0.3",
         "shell-quote": "^1.8.1",
         "speedtest-net": "^2.2.0",
-        "topgg-autoposter": "^2.0.1",
-        "prettier": "^3.0.0",
-        "@tsmx/human-readable": "^2.0.1"
+        "topgg-autoposter": "^2.0.1"
     },
     "prettier": {
         "tabWidth": 4,
@@ -50,5 +48,11 @@
     "license": "ISC",
     "engines": {
         "node": ">=18.x"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1",
+        "opencommit": "github:RfadnjdExt/opencommit",
+        "prettier": "^3.0.0",
+        "web-opencommit": "github:RfadnjdExt/web-opencommit"
     }
 }

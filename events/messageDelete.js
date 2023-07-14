@@ -4,7 +4,6 @@ const { deletedChannelId } = require("../config.js");
 
 module.exports = async (client, message) => {
     const author = message.author;
-    console.log(author)
     await db.snipe.create({
         content: message.content,
         channelId: message.channelId,
