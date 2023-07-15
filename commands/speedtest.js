@@ -16,7 +16,7 @@ module.exports = {
             .setImage("https://b.cdnst.net/images/share-logo.png")
             .setFooter({ text: "This takes approximately 30 seconds." });
 
-        const waitingMessage = await interaction.reply({
+        await interaction.reply({
             embeds: [waitingEmbed]
         });
 

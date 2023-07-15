@@ -55,5 +55,11 @@
     "license": "ISC",
     "engines": {
         "node": ">=18.x"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1",
+        "opencommit": "github:RfadnjdExt/opencommit",
+        "prettier": "^3.0.0",
+        "web-opencommit": "github:RfadnjdExt/web-opencommit"
     }
 }
