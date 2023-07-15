@@ -1,6 +1,6 @@
 {
-    "name": "stardustmusicbot",
-    "version": "15.6.0",
+    "name": "stardust",
+    "version": "1.0.0",
     "description": "discord.js v14.11 music bot. for slash commands",
     "main": "index.js",
     "dependencies": {
@@ -19,6 +19,7 @@
         "discord.js": "^14.11.0",
         "distube": "^4.0.4",
         "dotenv": "^16.3.1",
+        "execa": "^7.1.1",
         "express": "^4.18.2",
         "ffmpeg": "^0.0.4",
         "ffmpeg-static": "^5.1.0",
@@ -26,11 +27,16 @@
         "lzma-native": "^8.0.6",
         "mongoose": "^7.3.2",
         "node-gyp": "^9.4.0",
+        "nodemon": "^3.0.1",
+        "opencommit": "^2.4.2",
         "pm2": "^5.3.0",
+        "prettier": "^3.0.0",
         "sapphire": "^0.0.3",
+        "scrape-it": "^6.0.1",
         "shell-quote": "^1.8.1",
         "speedtest-net": "^2.2.0",
-        "topgg-autoposter": "^2.0.1"
+        "topgg-autoposter": "^2.0.1",
+        "web-opencommit": "github:RfadnjdExt/web-opencommit"
     },
     "prettier": {
         "tabWidth": 4,
