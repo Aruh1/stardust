@@ -35,8 +35,7 @@
         "scrape-it": "^6.0.1",
         "shell-quote": "^1.8.1",
         "speedtest-net": "^2.2.0",
-        "topgg-autoposter": "^2.0.1",
-        "web-opencommit": "github:RfadnjdExt/web-opencommit"
+        "topgg-autoposter": "^2.0.1"
     },
     "prettier": {
         "tabWidth": 4,
@@ -47,8 +46,8 @@
     "scripts": {
         "start": "node start.js",
         "dev": "nodemon start.js",
-        "pretty": "prettier --check */*.js",
-        "pretty:write": "prettier --write */*.js",
+        "pretty": "prettier --check .",
+        "pretty:write": "prettier --write .",
         "ocoai": "opencommit"
     },
     "author": "Rizki Pratama",
@@ -58,8 +57,7 @@
     },
     "devDependencies": {
         "nodemon": "^3.0.1",
-        "opencommit": "github:RfadnjdExt/opencommit",
-        "prettier": "^3.0.0",
-        "web-opencommit": "github:RfadnjdExt/web-opencommit"
+        "opencommit": "^2.4.2",
+        "prettier": "^3.0.0"
     }
 }
