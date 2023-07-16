@@ -29,8 +29,8 @@
     "scripts": {
         "start": "node start.js",
         "dev": "nodemon start.js",
-        "pretty": "prettier --check */*.js",
-        "pretty:write": "prettier --write ./",
+        "pretty": "prettier --check .",
+        "pretty:write": "prettier --write .",
         "ocoai": "opencommit"
     },
     "author": "Rizki Pratama",
