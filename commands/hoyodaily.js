@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
-const fetch = require("node-fetch");
 const db = require("../mongoDB");
 
 module.exports = {

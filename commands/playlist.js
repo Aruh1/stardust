@@ -251,7 +251,7 @@ module.exports = {
 
                 await interaction
                     .reply({
-                        content: `<@${interaction.member.id}>, ${lang.msg102}`
+                        content: `<@${interaction.member.id}>, ${lang.msg61}`
                     })
                     .catch(e => {});
 
