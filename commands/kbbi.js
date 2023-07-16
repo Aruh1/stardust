@@ -1,6 +1,7 @@
 const axios = require("axios").default;
 const { scrapeHTML } = require("scrape-it");
 const { ApplicationCommandOptionType } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 async function searchKbbi(str) {
     const specialChar = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
@@ -65,7 +66,7 @@ module.exports = {
     description: "Search a word using KBBI",
     options: [
         {
-            name: "word",
+            name: "kata",
             description: "The word to search in KBBI",
             type: ApplicationCommandOptionType.String,
             required: true
@@ -73,15 +74,40 @@ module.exports = {
     ],
     permissions: "0x0000000000000800",
     run: async (_client, interaction) => {
-        const word = interaction.options.getString("word");
-        const result = await searchKbbi(word);
-        // anda bisa atur respon dari data 'result'
-        if (result) {
-            // kalo data ketemu
-            await interaction.reply(`Word: ${result.title}\nMeaning: ${result.makna}`);
-        } else {
-            // kalo data gak ketemu atau ada error
-            await interaction.reply("Word not found.");
+        // Get string from options
+        const word = interaction.options.getString("kata");
+
+        try {
+            const result = await searchKbbi(word);
+
+            await interaction.reply({
+                embeds: [
+                    {
+                        title: "KBBI",
+                        fields: [
+                            {
+                                name: "Kata",
+                                value: String(result.title)
+                            },
+                            {
+                                name: "Makna",
+                                value: String(result.makna)
+                            }
+                        ]
+                    }
+                ]
+            });
+            // if data is found
+            // await interaction.reply(`Kata: ${result.title}\nMakna: ${result.makna}`);
+        } catch (error) {
+            const errorEmbed = new EmbedBuilder()
+                .setTitle("KBBI")
+                .setDescription("An error occurred while running the KBBi. Please try again later.");
+
+            interaction.reply({ embeds: [errorEmbed] });
+            // if data is not found or there is an error
+            // await interaction.reply("Kata tidak ditemukan.");
+            console.log(error);
         }
     }
 };
