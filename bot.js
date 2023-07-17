@@ -65,7 +65,6 @@ const loadEventsRecursive = async (dirPath, eventNamePrefix) => {
                 if (dirPath.endsWith("player")) {
                     discordClient.player.on(eventName, event.bind(null, discordClient));
                 } else {
-                    console.log(eventName);
                     discordClient.on(eventName, event.bind(null, discordClient));
                 }
 

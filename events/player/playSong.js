@@ -1,8 +1,6 @@
 const db = require("../../mongoDB");
 
-module.exports = async (client, queue, song) => {
-    console.log(song);
-
+module.exports = async (client, queue, song, interaction) => {
     let lang = await db?.musicbot?.findOne({
         guildID: queue?.textChannel?.guild?.id
     });
@@ -12,11 +10,20 @@ module.exports = async (client, queue, song) => {
 
     if (!queue && !client.config.opt.loopMessage && queue?.repeatMode !== 0 && !queue?.textChannel) return;
 
-    queue?.textChannel
-        ?.send({
-            content: lang.msg13
-                .replace("{track?.title}", song?.name)
-                .replace("{queue?.connection.channel.name}", `<#${queue.voice.connection.joinConfig.channelId}>`)
+    await interaction
+        ?.editReply({
+            content: null,
+            embeds: [
+                {
+                    description: lang.msg13
+                        .replace("{track?.title}", song?.name)
+                        .replace(
+                            "{queue?.connection.channel.name}",
+                            `<#${queue.voice.connection.joinConfig.channelId}>`
+                        ),
+                    thumbnail: { url: song.thumbnail }
+                }
+            ]
         })
-        .catch(e => {});
+        .catch(console.error);
 };
