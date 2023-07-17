@@ -67,7 +67,6 @@ const loadEventsRecursive = async (dirPath, eventNamePrefix) => {
                 } else {
                     discordClient.on(eventName, event.bind(null, discordClient));
                 }
-
                 delete require.cache[require.resolve(filePath)];
             }
         }
