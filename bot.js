@@ -61,10 +61,10 @@ const loadEventsRecursive = async (dirPath, eventNamePrefix) => {
                 const event = require(filePath);
                 const eventName = file.split(".")[0];
                 console.log(`${eventNamePrefix}: ${eventName}`);
+
                 if (dirPath.endsWith("player")) {
                     discordClient.player.on(eventName, event.bind(null, discordClient));
                 } else {
-                    console.log(eventName);
                     discordClient.on(eventName, event.bind(null, discordClient));
                 }
                 delete require.cache[require.resolve(filePath)];

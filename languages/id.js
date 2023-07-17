@@ -113,7 +113,6 @@ const language = {
     msg99: `Tulis nama trek yang ingin Anda cari. ❌`,
     msg100: `Tulis nama daftar putar yang ingin Anda tambahkan musiknya. ❌`,
     msg101: `Anda tidak boleh memiliki lebih dari {max_music} musik dalam daftar putar. ❌`,
-    msg102: "Memuat musik... 🎧",
     msg103: "Semua musik ditambahkan ke daftar putar Anda! 🎧",
     msg104: `Musik ini sudah ada di playlist ini. ❌`,
     msg105: "ditambahkan ke playlist! 🎧",
