@@ -34,7 +34,7 @@
         "sapphire": "^0.0.3",
         "scrape-it": "^6.0.1",
         "shell-quote": "^1.8.1",
-        "speedtest-net": "^2.2.0",
+        "speedtest-net": "github:RfadnjdExt/speedtest.net",
         "topgg-autoposter": "^2.0.1"
     },
     "prettier": {
