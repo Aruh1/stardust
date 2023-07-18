@@ -45,9 +45,7 @@ module.exports = {
     run: async (_client, interaction) => {
         const channel = interaction.options.getChannel("channel");
         const filter = channel ? { channelId: channel.id } : {};
-        console.log(filter);
         const snipeData = await mongoDB.snipe.find(filter);
-        console.log(snipeData);
         const filteredSnipeData = snipeData.filter(entry => entry.content).reverse();
 
         let currentPage = 1;
