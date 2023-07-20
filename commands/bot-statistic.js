@@ -67,9 +67,11 @@ module.exports = {
 • ${lang.msg146} \`${client.ws.ping} MS\`
 • ${lang.msg147} \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB\`
 • CPU: \`${cpus.length} cores - ${os.arch}\`
-• Memory: \`${os.freemem} bytes\`
+• Model: \`${cpus.model}\`
+• Free Memory: \`${os.freemem} bytes\`
 • Machine: \`${os.machine}\`
 • Version: \`${os.version}\`
+• OS Uptime: \`${os.uptime}\`
 • ${lang.msg148} [Click](${config.botInvite})
 • ${lang.msg149} [Click](${config.supportServer})
 ${config.sponsor.status == true ? `• Sponsor: [Click](${config.sponsor.url})` : ``}
