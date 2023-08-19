@@ -30,6 +30,19 @@ module.exports = {
                     required: true
                 }
             ]
+        },
+        {
+            name: "attach",
+            description: "Please attach.",
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: "name",
+                    description: "Please attach a audio file.",
+                    type: ApplicationCommandOptionType.Attachment,
+                    required: true
+                }
+            ]
         }
     ],
     voiceChannel: true,
