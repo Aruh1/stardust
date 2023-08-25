@@ -79,30 +79,21 @@ module.exports = {
 
         try {
             const result = await searchKbbi(word);
-
-            await interaction.reply({
-                embeds: [
-                    {
-                        title: "KBBI",
-                        fields: [
-                            {
-                                name: "Kata",
-                                value: String(result.title)
-                            },
-                            {
-                                name: "Makna",
-                                value: String(result.makna)
-                            }
-                        ]
-                    }
-                ]
-            });
+            
+            const embeda = new EmbedBuilder()
+            .setTitle(String(result.rawTitle))
+            .setFields(
+                { name: "Kata", value: String(result.title) },
+                { name: "Makna", value: String(result.contohEntri) }
+            )
+            await interaction.reply({ embeds: [embeda] })
+            console.log(result)
             // if data is found
             // await interaction.reply(`Kata: ${result.title}\nMakna: ${result.makna}`);
         } catch (error) {
             const errorEmbed = new EmbedBuilder()
                 .setTitle("KBBI")
-                .setDescription("An error occurred while running the KBBi. Please try again later.");
+                .setDescription("An error occurred while running the KBBI. Please try again later.");
 
             interaction.reply({ embeds: [errorEmbed] });
             // if data is not found or there is an error
