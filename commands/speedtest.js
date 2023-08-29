@@ -33,7 +33,7 @@ module.exports = {
                     "https://store-images.s-microsoft.com/image/apps.52586.13510798887693184.740d7baf-50aa-4e26-adec-ae739ac12068.c9ef9495-f245-4367-872b-c5cc7b48841d"
                 )
                 .addFields({ name: "Result", value: `[View Result](${speed.result.url})` })
-                .setImage(`${speed.result.url}.png`);
+                .setImage(`${speed.result.url} + ".png"`);
 
             interaction.editReply({ embeds: [finishEmbed] });
         } catch (error) {
