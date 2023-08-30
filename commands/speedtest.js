@@ -26,7 +26,7 @@ module.exports = {
                 .setTitle(_client.user.username + " Speedtest")
                 .setColor(0xffff00)
                 .setDescription(
-                    `The Speedtest is done, here is the result:\nLocal: ${speed.isp} \nServer: ${speed.server.name} | ${speed.server.location} | ID: ${speed.server.id}\nHost: ${speed.server.host}\n Packet-Loss: ${speed.packetLoss}\nIP: ${speed.server.ip}`
+                    `The Speedtest is done, here is the result:\nLocal: ${speed.isp} \nServer: ${speed.server.name} | ${speed.server.location} | ID: ${speed.server.id}\nHost: ${speed.server.host}\n Packet-Loss: ${speed.packetLoss}\n Bot Ping: ${_client.ws.ping} ms`
                 )
                 .setFooter({ text: "The Speedtest used is speedtest.net." })
                 .setThumbnail(

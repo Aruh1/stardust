@@ -24,7 +24,7 @@ module.exports = async client => {
         setInterval(
             () =>
                 client.user.setActivity({
-                    name: `Turu - ${client.ws.ping} ms`,
+                    name: `Turu | ${client.ws.ping} ms`,
                     type: ActivityType.Custom
                 }),
             1000
