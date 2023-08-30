@@ -24,12 +24,10 @@ module.exports = async client => {
         setInterval(
             () =>
                 client.user.setActivity({
-                    name: `${config.status} - this shard ${
-                        Number(client?.shard?.ids) + 1 ? Number(client?.shard?.ids) + 1 : "1"
-                    }`,
-                    type: ActivityType.Listening
+                    name: `Turu - ${client.ws.ping} ms`,
+                    type: ActivityType.Custom
                 }),
-            10000
+            1000
         );
         client.errorLog = config.errorLog;
     } else {
@@ -42,3 +40,14 @@ module.exports = async client => {
         ap.on("posted", () => {});
     }
 };
+
+// setInterval(
+//     () =>
+//         client.user.setActivity({
+//             name: `TURU - this shard ${
+//                 Number(client?.shard?.ids) + 1 ? Number(client?.shard?.ids) + 1 : "1"
+//             } ${client.ws.ping}ms`,
+//             type: ActivityType.Custom
+//         }),
+//     10000
+// );
