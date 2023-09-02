@@ -2,6 +2,7 @@ const axios = require("axios").default;
 const { scrapeHTML } = require("scrape-it");
 const { ApplicationCommandOptionType } = require("discord.js");
 const { EmbedBuilder } = require("discord.js");
+const config = require("../config.js")
 
 async function searchKbbi(str) {
     const specialChar = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
@@ -84,8 +85,12 @@ module.exports = {
             .setTitle(String(result.rawTitle))
             .setFields(
                 { name: "Kata", value: String(result.title) },
-                { name: "Makna", value: String(result.contohEntri) }
+                { name: "Makna", value: String(result.makna) },
+                { name: "Contoh", value: String(result.contohEntri) }
             )
+            .setColor(config.embedColor)
+            .setTimestamp()
+            .setFooter({ text: `${result.versi}` })
             await interaction.reply({ embeds: [embeda] })
             console.log(result)
             // if data is found
