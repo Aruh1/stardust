@@ -9,7 +9,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - name: Generate config file if it doesn't exist
               run: |
                   if [ ! -f config.sample.js ]; then
