@@ -4,12 +4,13 @@ const { deletedChannelId } = require("../config.js");
 
 module.exports = async (client, message) => {
     const author = message.author;
-    const attach = message.attachments;
+    const attach = message.attachments.url;
     await db.snipe.create({
         content: message.content,
         channelId: message.channelId,
         userAvatarURL: author.displayAvatarURL(),
-        userDisplayName: attach.attachment
+        userDisplayName: author.username,
+        userAttachment: String(attach)
     });
     const deletedMessageEmbed = new EmbedBuilder()
         .setColor(0xff0000)
