@@ -2,7 +2,7 @@ const axios = require("axios").default;
 const { scrapeHTML } = require("scrape-it");
 const { ApplicationCommandOptionType } = require("discord.js");
 const { EmbedBuilder } = require("discord.js");
-const config = require("../config.js")
+const config = require("../config.js");
 
 async function searchKbbi(str) {
     const specialChar = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
@@ -80,19 +80,19 @@ module.exports = {
 
         try {
             const result = await searchKbbi(word);
-            
+
             const embeda = new EmbedBuilder()
-            .setTitle(String(result.rawTitle))
-            .setFields(
-                { name: "Kata", value: String(result.title) },
-                { name: "Makna", value: String(result.makna) },
-                { name: "Contoh", value: String(result.contohEntri) }
-            )
-            .setColor(config.embedColor)
-            .setTimestamp()
-            .setFooter({ text: `${result.versi}` })
-            await interaction.reply({ embeds: [embeda] })
-            console.log(result)
+                .setTitle(String(result.rawTitle))
+                .setFields(
+                    { name: "Kata", value: String(result.title) },
+                    { name: "Makna", value: String(result.makna) },
+                    { name: "Contoh", value: String(result.contohEntri) }
+                )
+                .setColor(config.embedColor)
+                .setTimestamp()
+                .setFooter({ text: `${result.versi}` });
+            await interaction.reply({ embeds: [embeda] });
+            console.log(result);
             // if data is found
             // await interaction.reply(`Kata: ${result.title}\nMakna: ${result.makna}`);
         } catch (error) {

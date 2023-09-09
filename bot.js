@@ -8,6 +8,9 @@ const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const lang = require(`./languages/${config.language || "en"}.js`);
 const { Client, GatewayIntentBits, Partials } = require("discord.js");
+const {
+    DefaultWebSocketManagerOptions: { identifyProperties }
+} = require("@discordjs/ws");
 
 const discordClient = new Client({
     partials: [Partials.Channel, Partials.GuildMember, Partials.User],
@@ -32,6 +35,8 @@ discordClient.player = new DisTube(discordClient, {
 });
 
 discordClient.language = config.language || "en";
+
+identifyProperties.browser = config.onlineStatus;
 
 if (config.mongodbURL || process.env.MONGO) {
     mongoose

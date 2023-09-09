@@ -11,6 +11,7 @@ module.exports = {
     errorLog: "", //write your discord error log channel id.
     editedChannelId: "", //for logs
     deletedChannelId: "", //for logs
+    onlineStatus: "Discord", //for online bot status like mobile, example "Discord", "Discord Android", "Discord iOS"
 
     sponsor: {
         status: false, //true or false
