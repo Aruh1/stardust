@@ -15,11 +15,11 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            pm2 stop stardust
+            sudo pm2 stop stardust
             cd ../home/pololer/Desktop/stardust
             git pull
             rm -rf node_modules
             rm -rf package-lock.json
             npm install
-            pm2 restart stardust
+            sudo pm2 restart stardust
 
