@@ -16,7 +16,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             sudo -i
-            nvm use 20.10.0
+            ${{ secrets.PASSWORD }}
+            node -v
             sudo pm2 stop stardust
             cd ../home/pololer/Desktop/stardust
             git pull
