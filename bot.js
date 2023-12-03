@@ -40,10 +40,7 @@ identifyProperties.browser = config.onlineStatus;
 
 if (config.mongodbURL || process.env.MONGO) {
     mongoose
-        .connect(config.mongodbURL || process.env.MONGO, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        })
+        .connect(config.mongodbURL || process.env.MONGO)
         .then(async () => {
             console.log(`Connected MongoDB`);
         })
