@@ -11,9 +11,9 @@ jobs:
       - name: SSH
         uses: appleboy/ssh-action@master
         with:
-          proxy_host: ${{ secrets.HOST }}
-          proxy_username: ${{ secrets.USERNAME }}
-          proxy_password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
           script: |
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
