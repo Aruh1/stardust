@@ -11,9 +11,9 @@ jobs:
       - name: SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          proxy_host: ${{ secrets.HOST }}
+          proxy_username: ${{ secrets.USERNAME }}
+          proxy_password: ${{ secrets.PASSWORD }}
           script: |
             whoami
             node -v
