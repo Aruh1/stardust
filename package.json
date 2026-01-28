@@ -42,7 +42,7 @@
         "node": ">=20.x"
     },
     "devDependencies": {
-        "@clack/prompts": "^0.7.0",
+        "@clack/prompts": "^1.0.0",
         "nodemon": "^3.0.2",
         "opencommit": "^3.0.4",
         "prettier": "^3.1.1",
